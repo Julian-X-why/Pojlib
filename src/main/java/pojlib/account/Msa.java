@@ -44,6 +44,12 @@ public class Msa {
 
     private final Activity activity;
 
+    private String[] args;
+    String nickname = "Player";
+    String input = "OfflinePlayer:" + nickname;
+    String crackeduuid = UUID.nameUUIDFromBytes(input.getBytes(StandardCharsets.UTF_8));
+    String cracked = crackeduuid.toString();
+
     /* Fields used to fill the account  */
     public String mcName;
     public String mcToken;
@@ -78,11 +84,11 @@ public class Msa {
                 API.isDemoMode = false;
             } else {
                 acc.accessToken = "0";
-                acc.username = "DemoMode";
-                acc.uuid = "00000000-0000-0000-0000-000000000000";
+                acc.username = "Player";
+                acc.uuid = cracked;
                 acc.expiresOn = 0;
-                acc.isDemoMode = true;
-                API.isDemoMode = true;
+                acc.isDemoMode = false;
+                API.isDemoMode = false;
             }
 
             return acc;
